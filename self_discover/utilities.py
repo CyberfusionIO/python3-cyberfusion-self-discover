@@ -30,13 +30,13 @@ def get_pox_autodiscover_response(
     """
     root = ET.Element(
         "Autodiscover",
-        xmlns="http://schemas.microsoft.com/exchange/autodiscover/responseschema/2006",
+        xmlns="https://schemas.microsoft.com/exchange/autodiscover/responseschema/2006",
     )
 
     Response = ET.SubElement(
         root,
         "Response",
-        xmlns="http://schemas.microsoft.com/exchange/autodiscover/outlook/responseschema/2006a",
+        xmlns="https://schemas.microsoft.com/exchange/autodiscover/outlook/responseschema/2006a",
     )
 
     Account = ET.SubElement(Response, "Account")
@@ -104,14 +104,14 @@ def get_thunderbird_autoconfig_response(
     ET.SubElement(incomingServer, "username").text = "%EMAILADDRESS%"
     ET.SubElement(incomingServer, "authentication").text = "password-cleartext"
 
-    incomingServer = ET.SubElement(
-        emailProvider, "incomingServer", type="smtp"
+    outgoingServer = ET.SubElement(
+        emailProvider, "outgoingServer", type="smtp"
     )
-    ET.SubElement(incomingServer, "hostname").text = smtp_server_hostname
-    ET.SubElement(incomingServer, "port").text = "587"
-    ET.SubElement(incomingServer, "socketType").text = "STARTTLS"
-    ET.SubElement(incomingServer, "username").text = "%EMAILADDRESS%"
-    ET.SubElement(incomingServer, "authentication").text = "password-cleartext"
+    ET.SubElement(outgoingServer, "hostname").text = smtp_server_hostname
+    ET.SubElement(outgoingServer, "port").text = "587"
+    ET.SubElement(outgoingServer, "socketType").text = "STARTTLS"
+    ET.SubElement(outgoingServer, "username").text = "%EMAILADDRESS%"
+    ET.SubElement(outgoingServer, "authentication").text = "password-cleartext"
 
     tree = ET.ElementTree(root)
     ET.indent(tree, space="    ", level=0)
