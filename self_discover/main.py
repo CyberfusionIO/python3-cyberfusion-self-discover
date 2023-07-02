@@ -28,13 +28,25 @@ async def pox_autodiscover(request: Request) -> Response:
     body = await request.body()
 
     try:
-        email_address = SafeET.fromstring(body).find(
-            ".//{https://schemas.microsoft.com/exchange/autodiscover/outlook/requestschema/2006}EMailAddress"
-        )
+        parsed_body = SafeET.fromstring(body)
     except SafeET.ParseError:
         return Response(
             content="Payload must be valid XML",
             status_code=status.HTTP_400_BAD_REQUEST,
+        )
+
+    # 'xmlns' includes http or https. Example with https on #1, with http on #2.
+    #
+    # 1: https://learn.microsoft.com/en-us/exchange/client-developer/web-service-reference/pox-autodiscover-request-for-exchange
+    # 2: https://learn.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxdscli/fc420a31-5180-4a28-8397-8db8977861c6
+
+    email_address = parsed_body.find(
+        ".//{http://schemas.microsoft.com/exchange/autodiscover/outlook/requestschema/2006}EMailAddress"
+    )
+
+    if email_address is None:
+        email_address = parsed_body.find(
+            ".//{https://schemas.microsoft.com/exchange/autodiscover/outlook/requestschema/2006}EMailAddress"
         )
 
     if email_address is None:

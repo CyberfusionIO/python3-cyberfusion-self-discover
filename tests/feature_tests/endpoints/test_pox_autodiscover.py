@@ -13,10 +13,12 @@ HEADERS = {"Host": f"autodiscover.{DOMAIN}"}
 def test_pox_autodiscover(test_client: TestClient) -> None:
     response = test_client.post(
         "/autodiscover/autodiscover.xml",
-        data=f"""<Autodiscover xmlns="https://schemas.microsoft.com/exchange/autodiscover/outlook/requestschema/2006">
+        data=f"""<Autodiscover xmlns="http://schemas.microsoft.com/exchange/autodiscover/outlook/requestschema/2006">
    <Request>
      <EMailAddress>{EMAIL_ADDRESS}</EMailAddress>
-     <AcceptableResponseSchema>https://schemas.microsoft.com/exchange/autodiscover/outlook/responseschema/2006a</AcceptableResponseSchema>
+     <AcceptableResponseSchema>
+       http://schemas.microsoft.com/exchange/autodiscover/outlook/responseschema/2006a
+     </AcceptableResponseSchema>
    </Request>
  </Autodiscover>""",
         headers=HEADERS,
@@ -25,8 +27,8 @@ def test_pox_autodiscover(test_client: TestClient) -> None:
     assert response.status_code == 200
     assert (
         response.text
-        == f"""<Autodiscover xmlns="http://schemas.microsoft.com/exchange/autodiscover/responseschema/2006">
-    <Response xmlns="http://schemas.microsoft.com/exchange/autodiscover/outlook/responseschema/2006a">
+        == f"""<Autodiscover xmlns="https://schemas.microsoft.com/exchange/autodiscover/responseschema/2006">
+    <Response xmlns="https://schemas.microsoft.com/exchange/autodiscover/outlook/responseschema/2006a">
         <Account>
             <AccountType>email</AccountType>
             <Action>settings</Action>
@@ -69,6 +71,25 @@ def test_pox_autodiscover(test_client: TestClient) -> None:
     )
 
 
+def test_pox_autodiscover_xmlns_https_scheme_body(
+    test_client: TestClient,
+) -> None:
+    response = test_client.post(
+        "/autodiscover/autodiscover.xml",
+        data=f"""<Autodiscover xmlns="https://schemas.microsoft.com/exchange/autodiscover/outlook/requestschema/2006">
+   <Request>
+     <EMailAddress>{EMAIL_ADDRESS}</EMailAddress>
+     <AcceptableResponseSchema>
+       https://schemas.microsoft.com/exchange/autodiscover/outlook/responseschema/2006a
+     </AcceptableResponseSchema>
+   </Request>
+ </Autodiscover>""",
+        headers=HEADERS,
+    )
+
+    assert response.status_code == 200
+
+
 def test_pox_autodiscover_invalid_xml(test_client: TestClient) -> None:
     response = test_client.post(
         "/autodiscover/autodiscover.xml", data="example", headers=HEADERS
@@ -83,9 +104,11 @@ def test_pox_autodiscover_email_address_absent(
 ) -> None:
     response = test_client.post(
         "/autodiscover/autodiscover.xml",
-        data=f"""<Autodiscover xmlns="https://schemas.microsoft.com/exchange/autodiscover/outlook/requestschema/2006">
+        data=f"""<Autodiscover xmlns="http://schemas.microsoft.com/exchange/autodiscover/outlook/requestschema/2006">
    <Request>
-     <AcceptableResponseSchema>https://schemas.microsoft.com/exchange/autodiscover/outlook/responseschema/2006a</AcceptableResponseSchema>
+     <AcceptableResponseSchema>
+       http://schemas.microsoft.com/exchange/autodiscover/outlook/responseschema/2006a
+     </AcceptableResponseSchema>
    </Request>
  </Autodiscover>""",
         headers=HEADERS,
@@ -98,10 +121,12 @@ def test_pox_autodiscover_email_address_absent(
 def test_pox_autodiscover_missing_url_prefix(test_client: TestClient) -> None:
     response = test_client.post(
         "/autodiscover/autodiscover.xml",
-        data=f"""<Autodiscover xmlns="https://schemas.microsoft.com/exchange/autodiscover/outlook/requestschema/2006">
+        data=f"""<Autodiscover xmlns="http://schemas.microsoft.com/exchange/autodiscover/outlook/requestschema/2006">
    <Request>
      <EMailAddress>{EMAIL_ADDRESS}</EMailAddress>
-     <AcceptableResponseSchema>https://schemas.microsoft.com/exchange/autodiscover/outlook/responseschema/2006a</AcceptableResponseSchema>
+     <AcceptableResponseSchema>
+       http://schemas.microsoft.com/exchange/autodiscover/outlook/responseschema/2006a
+     </AcceptableResponseSchema>
    </Request>
  </Autodiscover>""",
         headers={"Host": DOMAIN},
@@ -115,10 +140,12 @@ def test_pox_autodiscover_missing_host(test_client: TestClient) -> None:
     with pytest.raises(Exception) as e:
         test_client.post(
             "/autodiscover/autodiscover.xml",
-            data=f"""<Autodiscover xmlns="https://schemas.microsoft.com/exchange/autodiscover/outlook/requestschema/2006">
+            data=f"""<Autodiscover xmlns="http://schemas.microsoft.com/exchange/autodiscover/outlook/requestschema/2006">
        <Request>
          <EMailAddress>{EMAIL_ADDRESS}</EMailAddress>
-         <AcceptableResponseSchema>https://schemas.microsoft.com/exchange/autodiscover/outlook/responseschema/2006a</AcceptableResponseSchema>
+         <AcceptableResponseSchema>
+           http://schemas.microsoft.com/exchange/autodiscover/outlook/responseschema/2006a
+         </AcceptableResponseSchema>
        </Request>
      </Autodiscover>""",
             headers={"Host": ""},
