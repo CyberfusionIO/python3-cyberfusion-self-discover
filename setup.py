@@ -7,7 +7,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="self-discover",
-    version="1.0",
+    version="1.0.1",
     description="Self Discover serves autodiscover (Outlook) and autoconfig (Thunderbird) XML files for mail auto-configuration.",
     long_description=long_description,
     long_description_content_type="text/markdown",
