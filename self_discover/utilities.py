@@ -104,14 +104,14 @@ def get_thunderbird_autoconfig_response(
     ET.SubElement(incomingServer, "username").text = "%EMAILADDRESS%"
     ET.SubElement(incomingServer, "authentication").text = "password-cleartext"
 
-    incomingServer = ET.SubElement(
-        emailProvider, "incomingServer", type="smtp"
+    outgoingServer = ET.SubElement(
+        emailProvider, "outgoingServer", type="smtp"
     )
-    ET.SubElement(incomingServer, "hostname").text = smtp_server_hostname
-    ET.SubElement(incomingServer, "port").text = "587"
-    ET.SubElement(incomingServer, "socketType").text = "STARTTLS"
-    ET.SubElement(incomingServer, "username").text = "%EMAILADDRESS%"
-    ET.SubElement(incomingServer, "authentication").text = "password-cleartext"
+    ET.SubElement(outgoingServer, "hostname").text = smtp_server_hostname
+    ET.SubElement(outgoingServer, "port").text = "587"
+    ET.SubElement(outgoingServer, "socketType").text = "STARTTLS"
+    ET.SubElement(outgoingServer, "username").text = "%EMAILADDRESS%"
+    ET.SubElement(outgoingServer, "authentication").text = "password-cleartext"
 
     tree = ET.ElementTree(root)
     ET.indent(tree, space="    ", level=0)
