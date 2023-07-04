@@ -78,7 +78,7 @@ def get_pox_autodiscover_response(
     tree = ET.ElementTree(root)
     ET.indent(tree, space="    ", level=0)
 
-    return ET.tostring(root, encoding="unicode") + "\n"
+    return ET.tostring(root, encoding="unicode", xml_declaration=True) + "\n"
 
 
 def get_thunderbird_autoconfig_response(
