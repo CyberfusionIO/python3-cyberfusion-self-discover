@@ -27,8 +27,8 @@ def test_pox_autodiscover(test_client: TestClient) -> None:
     assert response.status_code == 200
     assert (
         response.text
-        == f"""<Autodiscover xmlns="https://schemas.microsoft.com/exchange/autodiscover/responseschema/2006">
-    <Response xmlns="https://schemas.microsoft.com/exchange/autodiscover/outlook/responseschema/2006a">
+        == f"""<Autodiscover xmlns="http://schemas.microsoft.com/exchange/autodiscover/responseschema/2006">
+    <Response xmlns="http://schemas.microsoft.com/exchange/autodiscover/outlook/responseschema/2006a">
         <Account>
             <AccountType>email</AccountType>
             <Action>settings</Action>
