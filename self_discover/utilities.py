@@ -30,13 +30,13 @@ def get_pox_autodiscover_response(
     """
     root = ET.Element(
         "Autodiscover",
-        xmlns="https://schemas.microsoft.com/exchange/autodiscover/responseschema/2006",
+        xmlns="http://schemas.microsoft.com/exchange/autodiscover/responseschema/2006",
     )
 
     Response = ET.SubElement(
         root,
         "Response",
-        xmlns="https://schemas.microsoft.com/exchange/autodiscover/outlook/responseschema/2006a",
+        xmlns="http://schemas.microsoft.com/exchange/autodiscover/outlook/responseschema/2006a",
     )
 
     Account = ET.SubElement(Response, "Account")
