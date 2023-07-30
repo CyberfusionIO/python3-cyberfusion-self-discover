@@ -1,2 +1,2 @@
 defusedxml==0.7.1
-fastapi[all]==0.99.1
+fastapi[all]==0.100.1
