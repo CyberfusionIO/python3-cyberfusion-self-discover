@@ -23,7 +23,7 @@ setup(
         ]
     ),
     data_files=[],
-    install_requires=["fastapi[all]==0.100.1", "defusedxml==0.7.1"],
+    install_requires=["fastapi[all]==0.101.0", "defusedxml==0.7.1"],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
