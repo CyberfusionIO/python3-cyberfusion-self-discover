@@ -1,6 +1,6 @@
-# Self Discover
+# self-discover
 
-Self Discover serves autodiscover (Outlook) and autoconfig (Thunderbird) XML files for mail auto-configuration.
+self-discover serves autodiscover (Outlook) and autoconfig (Thunderbird) XML files for mail auto-configuration.
 
 # Install
 

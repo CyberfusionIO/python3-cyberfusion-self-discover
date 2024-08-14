@@ -8,13 +8,13 @@ with open("README.md", "r", encoding="utf-8") as fh:
 setup(
     name="self-discover",
     version="1.0.2",
-    description="Self Discover serves autodiscover (Outlook) and autoconfig (Thunderbird) XML files for mail auto-configuration.",
+    description="self-discover serves autodiscover (Outlook) and autoconfig (Thunderbird) XML files for mail auto-configuration.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     python_requires=">=3.6",
     author="William Edwards",
     author_email="support@cyberfusion.nl",
-    url="https://github.com/CyberfusionIO/Self-Discover",
+    url="https://github.com/CyberfusionIO/self-discover",
     platforms=["linux"],
     packages=find_packages(
         include=[
