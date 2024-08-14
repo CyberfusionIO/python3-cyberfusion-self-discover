@@ -27,10 +27,3 @@ Pass the following environment variables:
 # Usage
 
 Run the app using an ASGI server such as Uvicorn.
-
-# Tests
-
-Run tests with pytest:
-
-    pytest tests/
-
