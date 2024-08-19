@@ -13,7 +13,7 @@ def get_host_from_request(request: Request) -> str:
     host = request.url.hostname
 
     if not host:
-        raise Exception("Could not determine host")
+        raise RuntimeError("Could not determine host")
 
     return host
 
