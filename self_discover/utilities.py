@@ -4,6 +4,8 @@ import xml.etree.ElementTree as ET
 
 from fastapi import Request
 
+from self_discover.exceptions import MissingHostError
+
 
 def get_host_from_request(request: Request) -> str:
     """Get host (HTTP header) from Starlette request object.
@@ -13,7 +15,7 @@ def get_host_from_request(request: Request) -> str:
     host = request.url.hostname
 
     if not host:
-        raise RuntimeError("Could not determine host")
+        raise MissingHostError
 
     return host
 
