@@ -1,6 +1,7 @@
 import pytest
 from fastapi.testclient import TestClient
 
+from self_discover.exceptions import MissingHostError
 from self_discover.settings import settings
 
 DOMAIN = "example.com"
@@ -57,11 +58,9 @@ def test_thunderbird_missing_url_prefix(test_client: TestClient) -> None:
 
 
 def test_thunderbird_missing_host(test_client: TestClient) -> None:
-    with pytest.raises(Exception) as e:
+    with pytest.raises(MissingHostError) as e:
         response = test_client.get(
             "/mail/config-v1.1.xml",
             params={"emailaddress": EMAIL_ADDRESS},
             headers={"Host": ""},
         )
-
-    assert str(e.value) == "Could not determine host"

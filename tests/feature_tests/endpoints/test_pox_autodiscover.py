@@ -1,6 +1,7 @@
 import pytest
 from fastapi.testclient import TestClient
 
+from self_discover.exceptions import MissingHostError
 from self_discover.settings import settings
 
 DOMAIN = "example.com"
@@ -138,7 +139,7 @@ def test_pox_autodiscover_missing_url_prefix(test_client: TestClient) -> None:
 
 
 def test_pox_autodiscover_missing_host(test_client: TestClient) -> None:
-    with pytest.raises(Exception) as e:
+    with pytest.raises(MissingHostError) as e:
         test_client.post(
             "/autodiscover/autodiscover.xml",
             data=f"""<Autodiscover xmlns="http://schemas.microsoft.com/exchange/autodiscover/outlook/requestschema/2006">
@@ -151,5 +152,3 @@ def test_pox_autodiscover_missing_host(test_client: TestClient) -> None:
      </Autodiscover>""",
             headers={"Host": ""},
         )
-
-    assert str(e.value) == "Could not determine host"
