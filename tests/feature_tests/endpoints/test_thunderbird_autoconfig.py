@@ -58,8 +58,8 @@ def test_thunderbird_missing_url_prefix(test_client: TestClient) -> None:
 
 
 def test_thunderbird_missing_host(test_client: TestClient) -> None:
-    with pytest.raises(MissingHostError) as e:
-        response = test_client.get(
+    with pytest.raises(MissingHostError):
+        test_client.get(
             "/mail/config-v1.1.xml",
             params={"emailaddress": EMAIL_ADDRESS},
             headers={"Host": ""},

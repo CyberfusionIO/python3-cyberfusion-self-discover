@@ -106,7 +106,7 @@ def test_pox_autodiscover_email_address_absent(
 ) -> None:
     response = test_client.post(
         "/autodiscover/autodiscover.xml",
-        data=f"""<Autodiscover xmlns="http://schemas.microsoft.com/exchange/autodiscover/outlook/requestschema/2006">
+        data="""<Autodiscover xmlns="http://schemas.microsoft.com/exchange/autodiscover/outlook/requestschema/2006">
    <Request>
      <AcceptableResponseSchema>
        http://schemas.microsoft.com/exchange/autodiscover/outlook/responseschema/2006a
@@ -139,7 +139,7 @@ def test_pox_autodiscover_missing_url_prefix(test_client: TestClient) -> None:
 
 
 def test_pox_autodiscover_missing_host(test_client: TestClient) -> None:
-    with pytest.raises(MissingHostError) as e:
+    with pytest.raises(MissingHostError):
         test_client.post(
             "/autodiscover/autodiscover.xml",
             data=f"""<Autodiscover xmlns="http://schemas.microsoft.com/exchange/autodiscover/outlook/requestschema/2006">
