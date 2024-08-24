@@ -97,18 +97,14 @@ def get_thunderbird_autoconfig_response(
     ET.SubElement(emailProvider, "domain").text = domain
     ET.SubElement(emailProvider, "displayName").text = "%EMAILADDRESS%"
 
-    incomingServer = ET.SubElement(
-        emailProvider, "incomingServer", type="imap"
-    )
+    incomingServer = ET.SubElement(emailProvider, "incomingServer", type="imap")
     ET.SubElement(incomingServer, "hostname").text = imap_server_hostname
     ET.SubElement(incomingServer, "port").text = "993"
     ET.SubElement(incomingServer, "socketType").text = "SSL"
     ET.SubElement(incomingServer, "username").text = "%EMAILADDRESS%"
     ET.SubElement(incomingServer, "authentication").text = "password-cleartext"
 
-    outgoingServer = ET.SubElement(
-        emailProvider, "outgoingServer", type="smtp"
-    )
+    outgoingServer = ET.SubElement(emailProvider, "outgoingServer", type="smtp")
     ET.SubElement(outgoingServer, "hostname").text = smtp_server_hostname
     ET.SubElement(outgoingServer, "port").text = "587"
     ET.SubElement(outgoingServer, "socketType").text = "STARTTLS"
