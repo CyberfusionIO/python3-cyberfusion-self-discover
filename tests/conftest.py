@@ -1,7 +1,7 @@
 import pytest
 from fastapi.testclient import TestClient
 
-from self_discover.main import app
+from cyberfusion.SelfDiscover.main import app
 
 
 @pytest.fixture

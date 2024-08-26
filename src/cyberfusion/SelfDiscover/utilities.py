@@ -4,7 +4,7 @@ import xml.etree.ElementTree as ET
 
 from fastapi import Request
 
-from self_discover.exceptions import MissingHostError
+from cyberfusion.SelfDiscover.exceptions import MissingHostError
 
 
 def get_host_from_request(request: Request) -> str:
