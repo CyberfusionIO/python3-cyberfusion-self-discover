@@ -17,7 +17,7 @@ unit test and feature test:
   script:
     - pip install --no-cache-dir -r requirements/test.txt
     - pip install .
-    - DATABASE_PATH=self-discover.json pytest -n 10 -vvv --cov-branch --cov=self_discover --cov-config=.coveragerc --cov-fail-under=95 --junitxml=report-pytest.xml
+    - DATABASE_PATH=self-discover.json pytest -n 10 -vvv --cov-branch --cov=cyberfusion.SelfDiscover --cov-config=.coveragerc --cov-fail-under=100 --junitxml=report-pytest.xml
   artifacts:
     reports:
       junit: report-*.xml

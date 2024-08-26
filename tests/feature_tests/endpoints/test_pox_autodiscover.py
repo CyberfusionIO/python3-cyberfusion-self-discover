@@ -1,8 +1,8 @@
 import pytest
 from fastapi.testclient import TestClient
 
-from self_discover.exceptions import MissingHostError
-from self_discover.settings import settings
+from cyberfusion.SelfDiscover.exceptions import MissingHostError
+from cyberfusion.SelfDiscover.settings import settings
 
 DOMAIN = "example.com"
 

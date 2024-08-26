@@ -3,8 +3,8 @@
 import defusedxml.ElementTree as SafeET
 from fastapi import FastAPI, Query, Request, Response, status
 
-from self_discover.settings import settings
-from self_discover.utilities import (
+from cyberfusion.SelfDiscover.settings import settings
+from cyberfusion.SelfDiscover.utilities import (
     get_host_from_request,
     get_pox_autodiscover_response,
     get_thunderbird_autoconfig_response,
