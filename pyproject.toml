@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "python3-cyberfusion-self-discover"
-version = "1.0.4.2.1"
+version = "1.0.4.2.2"
 description = "self-discover serves autodiscover (Outlook) and autoconfig (Thunderbird) XML files for mail auto-configuration."
 readme = "README.md"
 authors = [
