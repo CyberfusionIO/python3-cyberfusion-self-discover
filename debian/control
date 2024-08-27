@@ -7,6 +7,6 @@ Standards-Version: 4.3.0
 
 Package: python3-cyberfusion-self-discover
 Architecture: all
-Depends: python3, ${python3:Depends}, ${misc:Depends}
+Depends: python3, uvicorn, ${python3:Depends}, ${misc:Depends}
 Description: self-discover serves autodiscover (Outlook) and autoconfig (Thunderbird) XML files for mail auto-configuration.
  self-discover serves autodiscover (Outlook) and autoconfig (Thunderbird) XML files for mail auto-configuration.

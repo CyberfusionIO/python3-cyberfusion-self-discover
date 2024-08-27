@@ -1,3 +1,9 @@
+python3-cyberfusion-self-discover (1.0.4.2.3) unstable; urgency=low
+
+  - Install Uvicorn CLI
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Tue, 27 Aug 2024 21:55:00 +0200
+
 python3-cyberfusion-self-discover (1.0.4.2.2) unstable; urgency=low
 
   - Bump compat level
