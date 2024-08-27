@@ -1,0 +1,20 @@
+[Unit]
+Description=Self-Discover daemon
+After=network.target
+
+[Service]
+User=self-discover
+Group=self-discover
+Environment=IMAP_SERVER_HOSTNAME=example.com
+Environment=POP3_SERVER_HOSTNAME=example.com
+Environment=SMTP_SERVER_HOSTNAME=example.com
+Environment=WORKERS_AMOUNT=1
+Environment=PORT=5000
+Environment=HOST=::
+Environment=FORWARDED_ALLOW_IPS=::1
+ExecStart=/usr/bin/uvicorn --host $HOST --port $PORT cyberfusion.SelfDiscover.main:app \
+        --workers $WORKERS_AMOUNT --proxy-headers --forwarded-allow-ips $FORWARDED_ALLOW_IPS
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
