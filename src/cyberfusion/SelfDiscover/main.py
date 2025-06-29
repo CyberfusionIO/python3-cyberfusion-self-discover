@@ -16,7 +16,7 @@ PREFIX_AUTODISCOVER = "autodiscover"
 PREFIX_AUTOCONFIG = "autoconfig"
 
 
-@app.post("/autodiscover/autodiscover.xml")
+@app.post("/autodiscover/autodiscover.xml")  # type: ignore[misc]
 async def pox_autodiscover(request: Request) -> Response:
     """Get POX ('plain old XML') autodiscover response."""
     if get_host_from_request(request).split(".")[0] != PREFIX_AUTODISCOVER:
@@ -65,7 +65,7 @@ async def pox_autodiscover(request: Request) -> Response:
     return Response(content=data, media_type="application/xml")
 
 
-@app.get("/mail/config-v1.1.xml")
+@app.get("/mail/config-v1.1.xml")  # type: ignore[misc]
 async def thunderbird_autoconfig(
     request: Request,
     email_address: str = Query(alias="emailaddress"),  # noqa: B008
