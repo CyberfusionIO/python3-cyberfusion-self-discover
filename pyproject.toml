@@ -14,7 +14,7 @@ dependencies = [
     "fastapi==0.136.0",
     "uvicorn==0.44.0",
     "defusedxml==0.7.1",
-    "pydantic-settings==2.13.1",
+    "pydantic-settings==2.14.0",
 ]
 
 [project.urls]
